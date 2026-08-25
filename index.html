@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>シャクティマット診断</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+  background: #f5f3ef;
+  color: #222;
+}
+
+.container {
+  width: min(92%, 520px);
+  margin: 0 auto;
+  padding: 40px 0 60px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 1.35;
+  margin: 0 0 14px;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 17px 15px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.answer {
+  background: #f3f1ed;
+  color: #222;
+}
+
+.progress {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.question {
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.result-title {
+  font-size: 28px;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.score {
+  text-align: center;
+  font-size: 44px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.message {
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.product {
+  margin-top: 28px;
+  padding: 20px;
+  background: #f5f3ef;
+  border-radius: 18px;
+}
+
+.product h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.small {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+  margin-top: 25px;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card" id="start">
+
+    <h1>
+      あなたは<br>
+      シャクティマットを<br>
+      買うべき？
+    </h1>
+
+    <div class="subtitle">
+      5つの質問に答えるだけで、<br>
+      あなたのシャクティ適性を診断します。
+    </div>
+
+    <button onclick="startDiagnosis()">
+      診断スタート
+    </button>
+
+  </div>
+
+
+  <div class="card hidden" id="quiz">
+
+    <div class="progress" id="progress"></div>
+
+    <div class="question" id="question"></div>
+
+    <div id="answers"></div>
+
+  </div>
+
+
+  <div class="card hidden" id="result">
+
+    <div class="result-title">
+      診断結果
+    </div>
+
+    <h1>
+      あなたは<br>
+      シャクティマットを<br>
+      買った方がいいです。
+    </h1>
+
+    <div class="score">
+      98%
+    </div>
+
+    <div class="message">
+
+      あなたは日常生活の中で、
+      自分では気づかないうちに
+      「ちょっとした刺激」を求めている可能性があります。
+
+      <br><br>
+
+      そんなあなたにおすすめしたいのが、
+      <strong>シャクティマット</strong>です。
+
+      <br><br>
+
+      正直に言います。
+
+      <br><br>
+
+      <strong>
+        買ってみてもいいと思います。
+      </strong>
+
+    </div>
+
+    <div class="product">
+
+      <h2>
+        🌵 シャクティマットを見てみる
+      </h2>
+
+      <p>
+        気になった方はこちらからチェックしてみてください。
+      </p>
+
+      <!--
+      ここに後からアフィリエイトリンクを入れます。
+      -->
+
+      <button onclick="openProduct()">
+        商品を見てみる
+      </button>
+
+    </div>
+
+    <div class="small">
+      ※この診断は娯楽目的で作成されたものです。
+      診断結果は商品の購入を強制するものではありません。
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+  {
+    question: "最近、家でリラックスできていますか？",
+    answers: [
+      "かなりできている",
+      "まあまあできている",
+      "あまりできていない",
+      "全然できていない"
+    ]
+  },
+
+  {
+    question: "寝る前は何をしていることが多いですか？",
+    answers: [
+      "スマホを見る",
+      "動画を見る",
+      "本を読む",
+      "特に何もしない"
+    ]
+  },
+
+  {
+    question: "最近「ちょっと疲れたな」と思うことはありますか？",
+    answers: [
+      "よくある",
+      "たまにある",
+      "あまりない",
+      "全然ない"
+    ]
+  },
+
+  {
+    question: "新しい健康グッズを見つけたら？",
+    answers: [
+      "すぐ試したくなる",
+      "ちょっと気になる",
+      "口コミを見る",
+      "あまり興味がない"
+    ]
+  },
+
+  {
+    question: "もし自宅で手軽に新しいリラックス方法を試せるなら？",
+    answers: [
+      "ぜひ試したい",
+      "ちょっと試したい",
+      "気が向いたら",
+      "別にいいかな"
+    ]
+  }
+
+];
+
+let currentQuestion = 0;
+
+
+function startDiagnosis() {
+
+  document.getElementById("start").classList.add("hidden");
+
+  document.getElementById("quiz").classList.remove("hidden");
+
+  showQuestion();
+
+}
+
+
+function showQuestion() {
+
+  const q = questions[currentQuestion];
+
+  document.getElementById("progress").textContent =
+    "質問 " + (currentQuestion + 1) + " / " + questions.length;
+
+  document.getElementById("question").textContent =
+    q.question;
+
+  const answers =
+    document.getElementById("answers");
+
+  answers.innerHTML = "";
+
+  q.answers.forEach(function(answer) {
+
+    const button = document.createElement("button");
+
+    button.textContent = answer;
+
+    button.className = "answer";
+
+    button.onclick = function() {
+      nextQuestion();
+    };
+
+    answers.appendChild(button);
+
+  });
+
+}
+
+
+function nextQuestion() {
+
+  currentQuestion++;
+
+  if (currentQuestion >= questions.length) {
+
+    document.getElementById("quiz").classList.add("hidden");
+
+    document.getElementById("result").classList.remove("hidden");
+
+  } else {
+
+    showQuestion();
+
+  }
+
+}
+
+
+function openProduct() {
+
+  alert(
+    "ここに後からアフィリエイトリンクを設定します。"
+  );
+
+}
+
+</script>
+
+</body>
+</html>
