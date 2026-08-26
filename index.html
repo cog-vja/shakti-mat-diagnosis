@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>シャクティマット診断</title>
+<title>シャクティ適性診断</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -20,282 +21,830 @@ body {
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     sans-serif;
-  background: #f5f3ef;
-  color: #222;
+
+  background:
+    radial-gradient(circle at top left, #ffd43b 0%, transparent 28%),
+    radial-gradient(circle at bottom right, #f45b9a 0%, transparent 25%),
+    #f47b20;
+
+  color: #32170c;
+  min-height: 100vh;
 }
 
 .container {
-  width: min(92%, 520px);
+  width: min(94%, 560px);
   margin: 0 auto;
-  padding: 40px 0 60px;
+  padding: 28px 0 50px;
 }
 
 .card {
-  background: white;
-  border-radius: 24px;
-  padding: 28px 22px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  background: #fffaf0;
+  border: 5px solid #f6c515;
+  border-radius: 28px;
+  padding: 26px 20px;
+  box-shadow:
+    0 10px 0 #7b2cbf,
+    0 18px 35px rgba(0,0,0,0.2);
+}
+
+.logo {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 8px;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 31px;
   line-height: 1.35;
-  margin: 0 0 14px;
+  text-align: center;
+  margin: 0 0 16px;
+  color: #d63c16;
 }
 
 .subtitle {
+  text-align: center;
   font-size: 16px;
-  line-height: 1.7;
-  color: #666;
-  margin-bottom: 30px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.start-decoration {
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin: 18px 0;
 }
 
 button {
   width: 100%;
-  border: none;
-  border-radius: 14px;
-  padding: 17px 15px;
-  margin-top: 12px;
+  border: 0;
+  border-radius: 18px;
+  padding: 17px 14px;
+  margin-top: 11px;
+
   font-size: 16px;
-  font-weight: bold;
-  background: #222;
+  font-weight: 800;
+
+  background: #f47b20;
   color: white;
-  cursor: pointer;
+
+  box-shadow: 0 5px 0 #b73e10;
+
+  transition: transform 0.08s;
 }
 
-button:hover {
-  opacity: 0.9;
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #b73e10;
 }
 
 .answer {
-  background: #f3f1ed;
-  color: #222;
+  background: #fff;
+  color: #32170c;
+  border: 3px solid #45a834;
+  box-shadow: 0 4px 0 #27751e;
+}
+
+.answer:nth-child(2) {
+  border-color: #f4c20d;
+  box-shadow: 0 4px 0 #c09200;
+}
+
+.answer:nth-child(3) {
+  border-color: #9b3dcc;
+  box-shadow: 0 4px 0 #6b208f;
+}
+
+.answer:nth-child(4) {
+  border-color: #ed4d91;
+  box-shadow: 0 4px 0 #a82a61;
 }
 
 .progress {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 14px;
-}
-
-.question {
-  font-size: 22px;
+  text-align: center;
+  font-size: 14px;
   font-weight: bold;
-  line-height: 1.5;
-  margin-bottom: 22px;
-}
-
-.result-title {
-  font-size: 28px;
-  line-height: 1.4;
+  color: #7b2cbf;
   margin-bottom: 18px;
 }
 
-.score {
+.progress-bar {
+  height: 10px;
+  background: #eee0c7;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #f47b20,
+    #f4c20d,
+    #45a834,
+    #9b3dcc,
+    #ed4d91
+  );
+  transition: width 0.3s;
+}
+
+.question-number {
   text-align: center;
-  font-size: 44px;
-  font-weight: bold;
-  margin: 25px 0;
+  font-size: 38px;
+  margin-bottom: 4px;
 }
 
-.message {
-  line-height: 1.9;
+.question {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+
+.hint {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 18px;
+}
+
+.result-header {
+  text-align: center;
   font-size: 16px;
+  font-weight: bold;
+  color: #7b2cbf;
 }
 
-.product {
-  margin-top: 28px;
+.result-emoji {
+  text-align: center;
+  font-size: 58px;
+  margin: 8px 0;
+}
+
+.result-title {
+  text-align: center;
+  font-size: 29px;
+  line-height: 1.4;
+  color: #d63c16;
+  margin-bottom: 12px;
+}
+
+.result-subtitle {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.score-box {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0a8,
+      #ffd1e5
+    );
+
+  border-radius: 22px;
+  padding: 18px;
+  text-align: center;
+  margin: 20px 0;
+  border: 3px dashed #9b3dcc;
+}
+
+.score-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.score {
+  font-size: 48px;
+  font-weight: 900;
+  color: #d63c16;
+}
+
+.result-text {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.result-text strong {
+  color: #7b2cbf;
+}
+
+.shakti-box {
+  margin-top: 25px;
   padding: 20px;
-  background: #f5f3ef;
-  border-radius: 18px;
+  border-radius: 22px;
+  background: #fff;
+  border: 4px solid #f47b20;
 }
 
-.product h2 {
-  font-size: 20px;
+.shakti-box h2 {
+  text-align: center;
+  color: #d63c16;
+  font-size: 23px;
   margin-top: 0;
 }
 
-.small {
-  font-size: 12px;
-  color: #777;
+.benefits {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+
+.benefits li {
+  margin: 12px 0;
   line-height: 1.6;
-  margin-top: 25px;
+  font-size: 15px;
+}
+
+.cta {
+  background: #45a834;
+  box-shadow: 0 5px 0 #27751e;
+  font-size: 17px;
+}
+
+.disclaimer {
+  font-size: 11px;
+  color: #777;
+  line-height: 1.7;
+  margin-top: 20px;
 }
 
 .hidden {
   display: none;
 }
+
+.footer-decoration {
+  text-align: center;
+  font-size: 26px;
+  margin-top: 25px;
+  letter-spacing: 4px;
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
-  <div class="card" id="start">
+<!-- =========================
+     START
+========================= -->
 
-    <h1>
-      あなたは<br>
-      シャクティマットを<br>
-      買うべき？
-    </h1>
+<div class="card" id="start">
 
-    <div class="subtitle">
-      5つの質問に答えるだけで、<br>
-      あなたのシャクティ適性を診断します。
+  <div class="logo">
+    🌺🪷🌵
+  </div>
+
+  <h1>
+    あなたは<br>
+    シャクティマットを<br>
+    買うべき？
+  </h1>
+
+  <div class="start-decoration">
+    🟠 🟢 🟡 🟣 🩷
+  </div>
+
+  <div class="subtitle">
+    5つの質問に直感で答えるだけ。<br>
+    あなたの「シャクティ適性」を<br>
+    カラフルに診断します 🔮✨
+  </div>
+
+  <button onclick="startDiagnosis()">
+    🌈 診断スタート 🌈
+  </button>
+
+  <div class="disclaimer">
+    ※この診断は娯楽目的のコンテンツです。
+    医学的・心理学的な診断ではありません。
+  </div>
+
+</div>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<div class="card hidden" id="quiz">
+
+  <div class="progress" id="progress"></div>
+
+  <div class="progress-bar">
+    <div
+      class="progress-fill"
+      id="progressFill">
+    </div>
+  </div>
+
+  <div
+    class="question-number"
+    id="questionEmoji">
+    🌿
+  </div>
+
+  <div
+    class="question"
+    id="question">
+  </div>
+
+  <div
+    class="hint"
+    id="hint">
+  </div>
+
+  <div id="answers"></div>
+
+</div>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div class="card hidden" id="result">
+
+  <div class="result-header">
+    🔮 診断結果 🔮
+  </div>
+
+  <div
+    class="result-emoji"
+    id="resultEmoji">
+  </div>
+
+  <div
+    class="result-title"
+    id="resultTitle">
+  </div>
+
+  <div
+    class="result-subtitle"
+    id="resultSubtitle">
+  </div>
+
+
+  <div class="score-box">
+
+    <div class="score-label">
+      🌵 シャクティ適性
     </div>
 
-    <button onclick="startDiagnosis()">
-      診断スタート
+    <div
+      class="score"
+      id="score">
+    </div>
+
+  </div>
+
+
+  <div
+    class="result-text"
+    id="resultText">
+  </div>
+
+
+  <div class="shakti-box">
+
+    <h2>
+      🌵 あなたにシャクティマット
+    </h2>
+
+    <p>
+      診断結果がどうであっても、
+      自分のための時間を作ることは大切です 🧘✨
+    </p>
+
+    <ul class="benefits">
+
+      <li>
+        🌿 <strong>リラックスタイムのサポート</strong><br>
+        日常の中で刺激を取り入れながら、
+        ゆっくり過ごす時間に。
+      </li>
+
+      <li>
+        🧘 <strong>身体を意識する時間</strong><br>
+        マットの刺激を感じながら、
+        自分の身体と向き合うきっかけに。
+      </li>
+
+      <li>
+        🌙 <strong>夜のリラックスタイム</strong><br>
+        一日の終わりに、自分のための時間を
+        作る習慣の候補に。
+      </li>
+
+      <li>
+        ✨ <strong>新しいウェルネス習慣</strong><br>
+        いつもの生活にちょっと変わった
+        アイテムを取り入れたい人にも。
+      </li>
+
+    </ul>
+
+
+    <!--
+      後からここにアフィリエイトURLを設定します。
+    -->
+
+    <button
+      class="cta"
+      onclick="openProduct()">
+      🌵 シャクティマットを見てみる 🌵
     </button>
 
   </div>
 
 
-  <div class="card hidden" id="quiz">
+  <div class="disclaimer">
 
-    <div class="progress" id="progress"></div>
-
-    <div class="question" id="question"></div>
-
-    <div id="answers"></div>
+    ※本ページは娯楽目的の診断コンテンツです。
+    シャクティマットの使用感や効果には個人差があります。
+    疾患の治療・予防等を目的としたものではありません。
 
   </div>
 
-
-  <div class="card hidden" id="result">
-
-    <div class="result-title">
-      診断結果
-    </div>
-
-    <h1>
-      あなたは<br>
-      シャクティマットを<br>
-      買った方がいいです。
-    </h1>
-
-    <div class="score">
-      98%
-    </div>
-
-    <div class="message">
-
-      あなたは日常生活の中で、
-      自分では気づかないうちに
-      「ちょっとした刺激」を求めている可能性があります。
-
-      <br><br>
-
-      そんなあなたにおすすめしたいのが、
-      <strong>シャクティマット</strong>です。
-
-      <br><br>
-
-      正直に言います。
-
-      <br><br>
-
-      <strong>
-        買ってみてもいいと思います。
-      </strong>
-
-    </div>
-
-    <div class="product">
-
-      <h2>
-        🌵 シャクティマットを見てみる
-      </h2>
-
-      <p>
-        気になった方はこちらからチェックしてみてください。
-      </p>
-
-      <!--
-      ここに後からアフィリエイトリンクを入れます。
-      -->
-
-      <button onclick="openProduct()">
-        商品を見てみる
-      </button>
-
-    </div>
-
-    <div class="small">
-      ※この診断は娯楽目的で作成されたものです。
-      診断結果は商品の購入を強制するものではありません。
-    </div>
-
+  <div class="footer-decoration">
+    🪷 🟠 🌺 🟢 🌵 🟣 🌺 🩷
   </div>
+
+</div>
 
 </div>
 
 
 <script>
 
+/* =========================================
+   8タイプ
+========================================= */
+
+const types = {
+
+  stimulation: {
+    emoji: "🔥🌵",
+    title: "刺激を求める冒険家タイプ",
+    subtitle: "毎日にちょっとした刺激を取り入れるのが得意！",
+    text:
+      "あなたは、いつもの生活の中にも新しい刺激を取り入れることで、毎日を楽しくできるタイプです 🔥✨ " +
+      "「面白そう！」と思ったものには一歩踏み出してみる好奇心があります。 " +
+      "そんなあなたなら、シャクティマットの独特な刺激も楽しめるかもしれません 🌵🌶️"
+  },
+
+  relax: {
+    emoji: "🌙🧘",
+    title: "リラックス上手タイプ",
+    subtitle: "自分の時間を大切にできる、穏やかなあなた ✨",
+    text:
+      "あなたは、自分自身のペースを大切にできるタイプです 🌙💜 " +
+      "忙しい毎日の中でも、ほっと一息つく時間を意識できるのは素敵なこと。 " +
+      "そんなあなたには、自宅で気軽に取り入れられる新しいリラックス習慣が合いそうです 🧘🌿"
+  },
+
+  novelty: {
+    emoji: "✨🚀",
+    title: "新しい物好きタイプ",
+    subtitle: "「知らないもの」にワクワクできる好奇心派！",
+    text:
+      "あなたは、新しいものを見つけると試してみたくなるタイプです ✨🚀 " +
+      "好奇心を持って新しい体験を楽しめるのは、あなたの大きな魅力。 " +
+      "まだ試したことのないシャクティマットも、候補に入れてみる価値がありそうです 🌵💫"
+  },
+
+  stability: {
+    emoji: "🏡🌿",
+    title: "安定志向タイプ",
+    subtitle: "自分に合った心地よさを大切にするあなた 🏡",
+    text:
+      "あなたは、無理に新しいものを追いかけるより、自分にとって心地よいものを大切にできるタイプです 🌿🏡 " +
+      "だからこそ、新しいものを選ぶときも「自分に合うか」をしっかり考えられます。 " +
+      "おうち時間に新しい習慣を1つ加えるなら、シャクティマットも面白い選択肢です ✨"
+  },
+
+  energy: {
+    emoji: "☀️⚡",
+    title: "元気いっぱいタイプ",
+    subtitle: "エネルギーにあふれた毎日を楽しむあなた！",
+    text:
+      "あなたは、日々をアクティブに楽しむエネルギッシュなタイプ ☀️⚡ " +
+      "行動力があり、やりたいことを見つけるとすぐ動けるのが魅力です。 " +
+      "そんなあなたにも、ときには立ち止まって自分をいたわる時間が必要かもしれません 🧘🌙"
+  },
+
+  hardworker: {
+    emoji: "💪🌺",
+    title: "日々頑張っているタイプ",
+    subtitle: "毎日をしっかり走り続けているあなたへ 💪",
+    text:
+      "あなたは、日々のことをきちんとこなしながら頑張れるタイプです 💪🌺 " +
+      "頑張れることは大きな長所ですが、自分のためだけに使う時間も同じくらい大切。 " +
+      "シャクティマットを、忙しい一日の中に小さな区切りを作るアイテムとして試してみるのも良さそうです 🌙✨"
+  },
+
+  home: {
+    emoji: "🛋️🏡",
+    title: "おうち時間が大事タイプ",
+    subtitle: "自宅を最高の居場所にできるあなた 🏡✨",
+    text:
+      "あなたは、自分の家で過ごす時間を大切にできるタイプです 🛋️🏡 " +
+      "お気に入りの空間でゆっくり過ごすことは、立派な楽しみ方。 " +
+      "そんなおうち時間に、新しいウェルネスアイテムを加えるのも楽しそうです 🌿🌵"
+  },
+
+  outdoor: {
+    emoji: "🌳🏕️",
+    title: "アウトドアタイプ",
+    subtitle: "外の世界からエネルギーをもらうあなた！",
+    text:
+      "あなたは、外に出て新しい景色や空気を感じることで元気になれるタイプ 🌳🏕️ " +
+      "好奇心旺盛で、行動範囲を広げることを楽しめるのが魅力です。 " +
+      "そんなあなたが家で過ごす時間にも、ちょっとした刺激を取り入れてみるのは面白そうですね 🌵✨"
+  }
+
+};
+
+
+/* =========================================
+   質問
+========================================= */
+
 const questions = [
 
   {
-    question: "最近、家でリラックスできていますか？",
+    emoji: "🌿",
+    question:
+      "最近、ちゃんとリラックスできていますか？",
+
+    hint:
+      "直感で一番近いものを選んでください。",
+
     answers: [
-      "かなりできている",
-      "まあまあできている",
-      "あまりできていない",
-      "全然できていない"
+
+      {
+        text: "🛋️ かなりできている",
+        scores: {
+          relax: 3,
+          home: 2
+        }
+      },
+
+      {
+        text: "😌 まあまあできている",
+        scores: {
+          relax: 2,
+          stability: 1
+        }
+      },
+
+      {
+        text: "😵‍💫 あまりできていない",
+        scores: {
+          hardworker: 2,
+          relax: 1
+        }
+      },
+
+      {
+        text: "🔥 なんとなく、ずっと動いている",
+        scores: {
+          energy: 2,
+          stimulation: 2,
+          hardworker: 1
+        }
+      }
+
     ]
+
   },
 
-  {
-    question: "寝る前は何をしていることが多いですか？",
-    answers: [
-      "スマホを見る",
-      "動画を見る",
-      "本を読む",
-      "特に何もしない"
-    ]
-  },
 
   {
-    question: "最近「ちょっと疲れたな」と思うことはありますか？",
+    emoji: "🌙",
+    question:
+      "寝る前のあなたは、どれに近い？",
+
+    hint:
+      "普段の自分を思い浮かべてください。",
+
     answers: [
-      "よくある",
-      "たまにある",
-      "あまりない",
-      "全然ない"
+
+      {
+        text: "📱 スマホを眺めている",
+        scores: {
+          stimulation: 2,
+          novelty: 1
+        }
+      },
+
+      {
+        text: "🎬 動画や映画を見る",
+        scores: {
+          novelty: 2,
+          home: 1
+        }
+      },
+
+      {
+        text: "📖 本を読む",
+        scores: {
+          relax: 2,
+          stability: 1
+        }
+      },
+
+      {
+        text: "😴 とにかく寝る",
+        scores: {
+          stability: 2,
+          relax: 1
+        }
+      }
+
     ]
+
   },
 
-  {
-    question: "新しい健康グッズを見つけたら？",
-    answers: [
-      "すぐ試したくなる",
-      "ちょっと気になる",
-      "口コミを見る",
-      "あまり興味がない"
-    ]
-  },
 
   {
-    question: "もし自宅で手軽に新しいリラックス方法を試せるなら？",
+    emoji: "✨",
+    question:
+      "新しいものを見つけたとき、あなたは？",
+
+    hint:
+      "「こうしたい！」と思うものを選んでください。",
+
     answers: [
-      "ぜひ試したい",
-      "ちょっと試したい",
-      "気が向いたら",
-      "別にいいかな"
+
+      {
+        text: "🚀 とりあえず試してみる",
+        scores: {
+          novelty: 3,
+          stimulation: 2
+        }
+      },
+
+      {
+        text: "👀 気になるけど、まず調べる",
+        scores: {
+          novelty: 2,
+          stability: 1
+        }
+      },
+
+      {
+        text: "🤔 誰かの感想を聞いてみる",
+        scores: {
+          stability: 2,
+          relax: 1
+        }
+      },
+
+      {
+        text: "🏡 今気に入っているものを大切にする",
+        scores: {
+          stability: 3,
+          home: 2
+        }
+      }
+
     ]
+
+  },
+
+
+  {
+    emoji: "☀️",
+    question:
+      "予定のない休日の朝。今日は完全に自由です。あなたは？",
+
+    hint:
+      "理想の休日を直感で選んでください。",
+
+    answers: [
+
+      {
+        text: "🛋️ 家でゆっくりする",
+        scores: {
+          home: 3,
+          relax: 2
+        }
+      },
+
+      {
+        text: "☕ とりあえずカフェへ行く",
+        scores: {
+          relax: 2,
+          novelty: 1
+        }
+      },
+
+      {
+        text: "🚗 行ったことのない場所へ行く",
+        scores: {
+          novelty: 3,
+          outdoor: 2
+        }
+      },
+
+      {
+        text: "🏃 外に出て何かする",
+        scores: {
+          outdoor: 3,
+          energy: 2
+        }
+      }
+
+    ]
+
+  },
+
+
+  {
+    emoji: "🚪",
+    question:
+      "あなたの目の前に4つの扉があります。なぜか1つだけ選ばなければなりません。どれを選ぶ？",
+
+    hint:
+      "理由は考えず、最初に「なんとなく好き」と思った扉を選んでください。",
+
+    answers: [
+
+      {
+        text: "🟢 緑の扉",
+        scores: {
+          relax: 2,
+          outdoor: 2
+        }
+      },
+
+      {
+        text: "🟡 黄色の扉",
+        scores: {
+          energy: 3,
+          novelty: 1
+        }
+      },
+
+      {
+        text: "🟣 紫の扉",
+        scores: {
+          stimulation: 2,
+          novelty: 2
+        }
+      },
+
+      {
+        text: "🩷 ピンクの扉",
+        scores: {
+          home: 2,
+          relax: 2
+        }
+      }
+
+    ]
+
   }
 
 ];
 
+
+/* =========================================
+   診断処理
+========================================= */
+
 let currentQuestion = 0;
+
+let scores = {
+  stimulation: 0,
+  relax: 0,
+  novelty: 0,
+  stability: 0,
+  energy: 0,
+  hardworker: 0,
+  home: 0,
+  outdoor: 0
+};
 
 
 function startDiagnosis() {
 
-  document.getElementById("start").classList.add("hidden");
+  document
+    .getElementById("start")
+    .classList.add("hidden");
 
-  document.getElementById("quiz").classList.remove("hidden");
+  document
+    .getElementById("quiz")
+    .classList.remove("hidden");
 
   showQuestion();
 
@@ -306,11 +855,35 @@ function showQuestion() {
 
   const q = questions[currentQuestion];
 
-  document.getElementById("progress").textContent =
-    "質問 " + (currentQuestion + 1) + " / " + questions.length;
+  document
+    .getElementById("progress")
+    .textContent =
+      "QUESTION " +
+      (currentQuestion + 1) +
+      " / " +
+      questions.length;
 
-  document.getElementById("question").textContent =
-    q.question;
+  document
+    .getElementById("progressFill")
+    .style.width =
+      ((currentQuestion + 1) /
+      questions.length * 100) +
+      "%";
+
+  document
+    .getElementById("questionEmoji")
+    .textContent =
+      q.emoji;
+
+  document
+    .getElementById("question")
+    .textContent =
+      q.question;
+
+  document
+    .getElementById("hint")
+    .textContent =
+      q.hint;
 
   const answers =
     document.getElementById("answers");
@@ -319,15 +892,29 @@ function showQuestion() {
 
   q.answers.forEach(function(answer) {
 
-    const button = document.createElement("button");
+    const button =
+      document.createElement("button");
 
-    button.textContent = answer;
+    button.textContent =
+      answer.text;
 
-    button.className = "answer";
+    button.className =
+      "answer";
 
-    button.onclick = function() {
-      nextQuestion();
-    };
+    button.onclick =
+      function() {
+
+        Object.keys(answer.scores)
+          .forEach(function(type) {
+
+            scores[type] +=
+              answer.scores[type];
+
+          });
+
+        nextQuestion();
+
+      };
 
     answers.appendChild(button);
 
@@ -340,11 +927,12 @@ function nextQuestion() {
 
   currentQuestion++;
 
-  if (currentQuestion >= questions.length) {
+  if (
+    currentQuestion >=
+    questions.length
+  ) {
 
-    document.getElementById("quiz").classList.add("hidden");
-
-    document.getElementById("result").classList.remove("hidden");
+    showResult();
 
   } else {
 
@@ -355,10 +943,107 @@ function nextQuestion() {
 }
 
 
+/* =========================================
+   結果
+========================================= */
+
+function showResult() {
+
+  document
+    .getElementById("quiz")
+    .classList.add("hidden");
+
+  document
+    .getElementById("result")
+    .classList.remove("hidden");
+
+
+  let winner =
+    "relax";
+
+  let highest =
+    scores.relax;
+
+
+  Object.keys(scores)
+    .forEach(function(type) {
+
+      if (
+        scores[type] >
+        highest
+      ) {
+
+        highest =
+          scores[type];
+
+        winner =
+          type;
+
+      }
+
+    });
+
+
+  const result =
+    types[winner];
+
+
+  document
+    .getElementById("resultEmoji")
+    .textContent =
+      result.emoji;
+
+  document
+    .getElementById("resultTitle")
+    .textContent =
+      result.title;
+
+  document
+    .getElementById("resultSubtitle")
+    .textContent =
+      result.subtitle;
+
+  document
+    .getElementById("resultText")
+    .textContent =
+      result.text;
+
+
+  /*
+    8タイプの結果でも
+    シャクティ適性は必ず高めにする。
+  */
+
+  const suitability =
+    92 +
+    Math.floor(Math.random() * 7);
+
+  document
+    .getElementById("score")
+    .textContent =
+      suitability + "%";
+
+}
+
+
+/* =========================================
+   商品リンク
+========================================= */
+
 function openProduct() {
 
+  /*
+    後からここを変更します。
+
+    例：
+
+    window.location.href =
+      "ここにアフィリエイトURL";
+
+  */
+
   alert(
-    "ここに後からアフィリエイトリンクを設定します。"
+    "ここにシャクティマットの商品ページへのリンクを設定します 🌵✨"
   );
 
 }
