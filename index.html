@@ -486,11 +486,17 @@ button:active {
 
   color: #d63c16;
 
-  font-size: 22px;
+  font-size: 19px;
 
   line-height: 1.4;
 
   margin-top: 0;
+
+  margin-bottom: 14px;
+
+  letter-spacing: -0.04em;
+
+  white-space: nowrap;
 }
 
 
@@ -1715,10 +1721,6 @@ function startDiagnosis() {
   document
     .getElementById("quiz")
     .classList.remove("hidden");
-
-  document
-    .getElementById("start")
-    .classList.add("hidden");
 
   window.scrollTo({
     top: 0,
