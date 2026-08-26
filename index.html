@@ -1,19 +1,68 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>シャクティ適性診断</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+シャクティマット診断｜あなたにおすすめのタイプを5問で診断
+</title>
+
+<meta
+  name="description"
+  content="シャクティマットが気になっている人へ。5つの質問に答えるだけで、あなたのタイプとおすすめのシャクティマットの楽しみ方を診断。シャクティマットの選び方・使い方・刺激の強さについても紹介します。"
+>
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#f47b20">
+
+
+<!-- SNS用 -->
+
+<meta
+  property="og:title"
+  content="シャクティマット診断｜あなたは買うべき？"
+>
+
+<meta
+  property="og:description"
+  content="5つの質問に答えるだけ。あなたのシャクティ適性を楽しく診断します。"
+>
+
+<meta
+  property="og:type"
+  content="website"
+>
+
+<meta
+  property="og:locale"
+  content="ja_JP"
+>
+
 
 <style>
+
+/* ==================================================
+   基本
+================================================== */
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+
   margin: 0;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -23,327 +72,685 @@ body {
     sans-serif;
 
   background:
-    radial-gradient(circle at top left, #ffd43b 0%, transparent 28%),
-    radial-gradient(circle at bottom right, #f45b9a 0%, transparent 25%),
+
+    radial-gradient(
+      circle at 10% 0%,
+      #ffd43b 0%,
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 100% 20%,
+      #ed4d91 0%,
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 0% 80%,
+      #45a834 0%,
+      transparent 20%
+    ),
+
     #f47b20;
 
   color: #32170c;
-  min-height: 100vh;
+
+  line-height: 1.7;
 }
+
+
+/* ==================================================
+   レイアウト
+================================================== */
 
 .container {
-  width: min(94%, 560px);
-  margin: 0 auto;
-  padding: 28px 0 50px;
+
+  width: min(94%, 600px);
+
+  margin: auto;
+
+  padding:
+    24px 0 60px;
 }
+
 
 .card {
+
   background: #fffaf0;
-  border: 5px solid #f6c515;
+
+  border:
+    4px solid
+    #f6c515;
+
   border-radius: 28px;
-  padding: 26px 20px;
+
+  padding: 25px 20px;
+
   box-shadow:
-    0 10px 0 #7b2cbf,
-    0 18px 35px rgba(0,0,0,0.2);
-}
+    0 9px 0 #7b2cbf,
+    0 20px 40px
+    rgba(0,0,0,0.18);
 
-.logo {
-  text-align: center;
-  font-size: 42px;
-  margin-bottom: 8px;
-}
-
-h1 {
-  font-size: 31px;
-  line-height: 1.35;
-  text-align: center;
-  margin: 0 0 16px;
-  color: #d63c16;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.8;
   margin-bottom: 28px;
 }
 
-.start-decoration {
+
+/* ==================================================
+   ヘッダー
+================================================== */
+
+.site-logo {
+
   text-align: center;
-  font-size: 28px;
-  letter-spacing: 8px;
-  margin: 18px 0;
+
+  font-size: 40px;
+
+  margin-bottom: 5px;
 }
 
-button {
-  width: 100%;
-  border: 0;
-  border-radius: 18px;
-  padding: 17px 14px;
-  margin-top: 11px;
+
+h1 {
+
+  color: #d63c16;
+
+  text-align: center;
+
+  font-size: 30px;
+
+  line-height: 1.35;
+
+  margin:
+    0 0 15px;
+}
+
+
+.lead {
+
+  text-align: center;
 
   font-size: 16px;
+
+  line-height: 1.9;
+}
+
+
+.color-dots {
+
+  text-align: center;
+
+  font-size: 25px;
+
+  letter-spacing: 6px;
+
+  margin:
+    16px 0 22px;
+}
+
+
+/* ==================================================
+   ボタン
+================================================== */
+
+button {
+
+  width: 100%;
+
+  border: none;
+
+  border-radius: 18px;
+
+  padding:
+    17px 12px;
+
+  margin-top: 10px;
+
+  font-size: 16px;
+
   font-weight: 800;
 
+  cursor: pointer;
+
   background: #f47b20;
+
   color: white;
 
-  box-shadow: 0 5px 0 #b73e10;
+  box-shadow:
+    0 5px 0 #b73e10;
 
-  transition: transform 0.08s;
+  transition:
+    transform .08s;
 }
+
 
 button:active {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0 #b73e10;
+
+  transform:
+    translateY(4px);
+
+  box-shadow:
+    0 1px 0 #b73e10;
 }
+
 
 .answer {
-  background: #fff;
+
+  background: white;
+
   color: #32170c;
-  border: 3px solid #45a834;
-  box-shadow: 0 4px 0 #27751e;
+
+  border:
+    3px solid #45a834;
+
+  box-shadow:
+    0 4px 0 #27751e;
 }
+
 
 .answer:nth-child(2) {
+
   border-color: #f4c20d;
-  box-shadow: 0 4px 0 #c09200;
+
+  box-shadow:
+    0 4px 0 #c09200;
 }
+
 
 .answer:nth-child(3) {
+
   border-color: #9b3dcc;
-  box-shadow: 0 4px 0 #6b208f;
+
+  box-shadow:
+    0 4px 0 #6b208f;
 }
+
 
 .answer:nth-child(4) {
+
   border-color: #ed4d91;
-  box-shadow: 0 4px 0 #a82a61;
+
+  box-shadow:
+    0 4px 0 #a82a61;
 }
+
+
+/* ==================================================
+   診断
+================================================== */
+
+.hidden {
+  display: none;
+}
+
 
 .progress {
+
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
+
   color: #7b2cbf;
-  margin-bottom: 18px;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  margin-bottom: 10px;
 }
 
+
 .progress-bar {
+
   height: 10px;
+
   background: #eee0c7;
+
   border-radius: 20px;
+
   overflow: hidden;
+
   margin-bottom: 24px;
 }
 
+
 .progress-fill {
+
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    #f47b20,
-    #f4c20d,
-    #45a834,
-    #9b3dcc,
-    #ed4d91
-  );
-  transition: width 0.3s;
+
+  width: 20%;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #f47b20,
+      #f4c20d,
+      #45a834,
+      #9b3dcc,
+      #ed4d91
+    );
+
+  transition:
+    width .3s;
 }
+
 
 .question-number {
+
   text-align: center;
-  font-size: 38px;
-  margin-bottom: 4px;
+
+  font-size: 42px;
 }
+
 
 .question {
+
   text-align: center;
-  font-size: 22px;
+
+  font-size: 21px;
+
   font-weight: 800;
+
   line-height: 1.55;
-  margin-bottom: 22px;
+
+  margin:
+    5px 0 12px;
 }
+
 
 .hint {
+
   text-align: center;
+
   font-size: 13px;
+
   color: #777;
-  margin-bottom: 18px;
+
+  margin-bottom: 15px;
 }
+
+
+/* ==================================================
+   結果
+================================================== */
 
 .result-header {
+
   text-align: center;
-  font-size: 16px;
-  font-weight: bold;
+
   color: #7b2cbf;
+
+  font-weight: 800;
 }
+
 
 .result-emoji {
+
   text-align: center;
-  font-size: 58px;
-  margin: 8px 0;
+
+  font-size: 60px;
+
+  margin: 5px 0;
 }
+
 
 .result-title {
+
   text-align: center;
-  font-size: 29px;
-  line-height: 1.4;
+
   color: #d63c16;
-  margin-bottom: 12px;
+
+  font-size: 28px;
+
+  line-height: 1.4;
 }
+
 
 .result-subtitle {
+
   text-align: center;
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 1.6;
-  margin-bottom: 20px;
+
+  font-weight: 800;
+
+  font-size: 16px;
 }
 
+
 .score-box {
+
+  text-align: center;
+
+  margin:
+    20px 0;
+
+  padding: 17px;
+
+  border-radius: 22px;
+
   background:
+
     linear-gradient(
       135deg,
       #fff0a8,
       #ffd1e5
     );
 
-  border-radius: 22px;
-  padding: 18px;
-  text-align: center;
-  margin: 20px 0;
-  border: 3px dashed #9b3dcc;
+  border:
+    3px dashed #9b3dcc;
 }
+
 
 .score-label {
+
   font-size: 14px;
-  font-weight: bold;
+
+  font-weight: 800;
 }
+
 
 .score {
-  font-size: 48px;
-  font-weight: 900;
+
   color: #d63c16;
+
+  font-size: 48px;
+
+  font-weight: 900;
 }
 
+
 .result-text {
+
   font-size: 16px;
+
   line-height: 1.9;
 }
 
-.result-text strong {
-  color: #7b2cbf;
+
+/* ==================================================
+   情報セクション
+================================================== */
+
+.info-section {
+
+  background: #fffaf0;
+
+  border-radius: 24px;
+
+  padding: 22px 20px;
+
+  margin-top: 22px;
+
+  border:
+    3px solid #f6c515;
 }
 
-.shakti-box {
-  margin-top: 25px;
-  padding: 20px;
-  border-radius: 22px;
-  background: #fff;
-  border: 4px solid #f47b20;
-}
 
-.shakti-box h2 {
-  text-align: center;
+.info-section h2 {
+
   color: #d63c16;
-  font-size: 23px;
+
+  font-size: 22px;
+
+  line-height: 1.4;
+
   margin-top: 0;
 }
 
-.benefits {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
+
+.info-section h3 {
+
+  color: #7b2cbf;
+
+  font-size: 18px;
 }
 
-.benefits li {
-  margin: 12px 0;
-  line-height: 1.6;
+
+.info-section p {
+
+  font-size: 15px;
+
+  line-height: 1.9;
+}
+
+
+.info-list {
+
+  padding-left: 20px;
+}
+
+
+.info-list li {
+
+  margin:
+    10px 0;
+
   font-size: 15px;
 }
 
-.cta {
-  background: #45a834;
-  box-shadow: 0 5px 0 #27751e;
-  font-size: 17px;
+
+/* ==================================================
+   強度カード
+================================================== */
+
+.intensity-grid {
+
+  display: grid;
+
+  gap: 12px;
 }
+
+
+.intensity {
+
+  padding: 15px;
+
+  border-radius: 18px;
+
+  background: white;
+
+  border:
+    3px solid #45a834;
+}
+
+
+.intensity:nth-child(2) {
+
+  border-color:
+    #f4c20d;
+}
+
+
+.intensity:nth-child(3) {
+
+  border-color:
+    #9b3dcc;
+}
+
+
+.intensity-title {
+
+  font-weight: 900;
+
+  font-size: 18px;
+}
+
+
+/* ==================================================
+   CTA
+================================================== */
+
+.shakti-box {
+
+  margin-top: 24px;
+
+  padding: 20px;
+
+  border-radius: 23px;
+
+  background: white;
+
+  border:
+    4px solid #f47b20;
+}
+
+
+.shakti-box h2 {
+
+  text-align: center;
+
+  color: #d63c16;
+}
+
+
+.cta {
+
+  background: #45a834;
+
+  box-shadow:
+    0 5px 0 #27751e;
+}
+
 
 .disclaimer {
+
   font-size: 11px;
+
   color: #777;
+
   line-height: 1.7;
-  margin-top: 20px;
+
+  margin-top: 18px;
 }
 
-.hidden {
-  display: none;
+
+/* ==================================================
+   FAQ
+================================================== */
+
+details {
+
+  background: white;
+
+  border-radius: 15px;
+
+  margin:
+    10px 0;
+
+  padding:
+    13px 15px;
+
+  border:
+    2px solid #f4c20d;
 }
 
-.footer-decoration {
+
+summary {
+
+  cursor: pointer;
+
+  font-weight: 800;
+
+  color: #7b2cbf;
+}
+
+
+/* ==================================================
+   フッター
+================================================== */
+
+.footer {
+
   text-align: center;
-  font-size: 26px;
-  margin-top: 25px;
+
+  font-size: 25px;
+
   letter-spacing: 4px;
+
+  padding:
+    10px 0 20px;
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="container">
 
-<!-- =========================
-     START
-========================= -->
 
-<div class="card" id="start">
+<!-- ==================================================
+     HERO
+================================================== -->
 
-  <div class="logo">
+<section class="card">
+
+  <div class="site-logo">
     🌺🪷🌵
   </div>
 
   <h1>
-    あなたは<br>
-    シャクティマットを<br>
-    買うべき？
+    シャクティマット診断
+    <br>
+    あなたは買うべき？
   </h1>
 
-  <div class="start-decoration">
+  <div class="color-dots">
     🟠 🟢 🟡 🟣 🩷
   </div>
 
-  <div class="subtitle">
-    5つの質問に直感で答えるだけ。<br>
-    あなたの「シャクティ適性」を<br>
-    カラフルに診断します 🔮✨
-  </div>
+  <p class="lead">
+
+    シャクティマットが気になっているけれど、
+    <br>
+    「自分に合うのかな？」と思っているあなたへ。
+
+    <br><br>
+
+    5つの質問に直感で答えるだけ。
+
+    <br>
+
+    あなたのタイプと
+    <strong>シャクティ適性</strong>
+    を楽しく診断します 🔮✨
+
+  </p>
 
   <button onclick="startDiagnosis()">
     🌈 診断スタート 🌈
   </button>
 
-  <div class="disclaimer">
+  <p class="disclaimer">
+
     ※この診断は娯楽目的のコンテンツです。
     医学的・心理学的な診断ではありません。
+
+  </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     QUIZ
+================================================== -->
+
+<section
+  class="card hidden"
+  id="quiz">
+
+  <div
+    class="progress"
+    id="progress">
   </div>
 
-</div>
-
-
-<!-- =========================
-     QUIZ
-========================= -->
-
-<div class="card hidden" id="quiz">
-
-  <div class="progress" id="progress"></div>
-
   <div class="progress-bar">
+
     <div
       class="progress-fill"
       id="progressFill">
     </div>
+
   </div>
 
   <div
@@ -364,17 +771,20 @@ button:active {
 
   <div id="answers"></div>
 
-</div>
+</section>
 
 
-<!-- =========================
+
+<!-- ==================================================
      RESULT
-========================= -->
+================================================== -->
 
-<div class="card hidden" id="result">
+<section
+  class="card hidden"
+  id="result">
 
   <div class="result-header">
-    🔮 診断結果 🔮
+    🔮 あなたの診断結果 🔮
   </div>
 
   <div
@@ -387,11 +797,10 @@ button:active {
     id="resultTitle">
   </div>
 
-  <div
+  <p
     class="result-subtitle"
     id="resultSubtitle">
-  </div>
-
+  </p>
 
   <div class="score-box">
 
@@ -406,182 +815,616 @@ button:active {
 
   </div>
 
-
-  <div
+  <p
     class="result-text"
     id="resultText">
-  </div>
+  </p>
 
+
+  <!-- ==================================================
+       シャクティおすすめ
+  ================================================== -->
 
   <div class="shakti-box">
 
     <h2>
-      🌵 あなたにシャクティマット
+      🌵 あなたにシャクティマットがおすすめな理由
     </h2>
 
-    <p>
-      診断結果がどうであっても、
-      自分のための時間を作ることは大切です 🧘✨
-    </p>
-
-    <ul class="benefits">
-
-      <li>
-        🌿 <strong>リラックスタイムのサポート</strong><br>
-        日常の中で刺激を取り入れながら、
-        ゆっくり過ごす時間に。
-      </li>
-
-      <li>
-        🧘 <strong>身体を意識する時間</strong><br>
-        マットの刺激を感じながら、
-        自分の身体と向き合うきっかけに。
-      </li>
-
-      <li>
-        🌙 <strong>夜のリラックスタイム</strong><br>
-        一日の終わりに、自分のための時間を
-        作る習慣の候補に。
-      </li>
-
-      <li>
-        ✨ <strong>新しいウェルネス習慣</strong><br>
-        いつもの生活にちょっと変わった
-        アイテムを取り入れたい人にも。
-      </li>
-
-    </ul>
-
-
-    <!--
-      後からここにアフィリエイトURLを設定します。
-    -->
+    <p id="recommendationText"></p>
 
     <button
       class="cta"
       onclick="openProduct()">
+
       🌵 シャクティマットを見てみる 🌵
+
     </button>
 
   </div>
 
 
-  <div class="disclaimer">
+  <p class="disclaimer">
 
-    ※本ページは娯楽目的の診断コンテンツです。
-    シャクティマットの使用感や効果には個人差があります。
-    疾患の治療・予防等を目的としたものではありません。
+    ※ここで紹介している内容は、
+    シャクティマットを使った生活習慣の提案です。
+    医療行為や疾病の治療を目的としたものではありません。
+
+  </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     SEO CONTENT
+================================================== -->
+
+<section class="card">
+
+  <div class="info-section">
+
+    <h2>
+      🌵 シャクティマットとは？
+    </h2>
+
+    <p>
+
+      シャクティマットは、表面にたくさんの突起が付いた
+      アキュプレッシャー（指圧）マットです。
+
+      <br><br>
+
+      マットの上に横になることで、
+      背中や肩などに刺激を感じながら、
+      自宅でリラックスタイムを作ることができます。
+
+      <br><br>
+
+      シャクティマットは、
+      「横になるだけ」という手軽さと、
+      独特の刺激感が特徴的なウェルネスアイテムです。
+
+    </p>
 
   </div>
 
-  <div class="footer-decoration">
-    🪷 🟠 🌺 🟢 🌵 🟣 🌺 🩷
+
+
+  <div class="info-section">
+
+    <h2>
+      ✨ シャクティマットがおすすめな人
+    </h2>
+
+    <ul class="info-list">
+
+      <li>
+        🌙 寝る前にリラックスする時間を作りたい人
+      </li>
+
+      <li>
+        🛋️ 自宅でできる新しい習慣を探している人
+      </li>
+
+      <li>
+        🧘 身体の緊張を意識する時間を作りたい人
+      </li>
+
+      <li>
+        🔥 普通のリラックスグッズでは物足りない人
+      </li>
+
+      <li>
+        ✨ 少し変わったウェルネスアイテムを試したい人
+      </li>
+
+      <li>
+        🌿 ヨガや瞑想などと組み合わせて使えるものを探している人
+      </li>
+
+    </ul>
+
   </div>
 
-</div>
+
+
+  <div class="info-section">
+
+    <h2>
+      💡 シャクティマットの選び方
+    </h2>
+
+    <p>
+
+      シャクティマットを選ぶときは、
+      特に<strong>刺激の強さ</strong>を意識するのがおすすめです。
+
+      <br><br>
+
+      シャクティのマットには、
+      現在3段階の強度があります。
+
+    </p>
+
+
+    <div class="intensity-grid">
+
+
+      <div class="intensity">
+
+        <div class="intensity-title">
+          🟢 Light
+        </div>
+
+        <p>
+
+          初めてシャクティマットを使う人が
+          検討しやすいタイプ。
+
+          <br>
+
+          「まず試してみたい」という人向けです。
+
+        </p>
+
+      </div>
+
+
+
+      <div class="intensity">
+
+        <div class="intensity-title">
+          🟡 Original
+        </div>
+
+        <p>
+
+          より刺激を求めたい人向け。
+
+          <br>
+
+          標準的な選択肢として
+          検討できます。
+
+        </p>
+
+      </div>
+
+
+
+      <div class="intensity">
+
+        <div class="intensity-title">
+          🟣 Advanced
+        </div>
+
+        <p>
+
+          強い刺激を好む人向け。
+
+          <br>
+
+          初めて使う場合は、
+          自分に合う強度か慎重に検討しましょう。
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="info-section">
+
+    <h2>
+      🌙 シャクティマットの使い方
+    </h2>
+
+    <p>
+
+      基本的な使い方はシンプルです。
+
+    </p>
+
+    <ol class="info-list">
+
+      <li>
+        ベッドや床など、安定した場所にマットを置く
+      </li>
+
+      <li>
+        背中や肩などをマットにあてる
+      </li>
+
+      <li>
+        最初は無理をせず、短い時間から試す
+      </li>
+
+      <li>
+        慣れてきたら、自分が心地よい時間で使う
+      </li>
+
+    </ol>
+
+    <p>
+
+      初めて使うときは、
+      スパイクの刺激を強く感じることがあります。
+
+      <br><br>
+
+      シャクティ公式でも、
+      最初は薄手の服を着て使う方法が紹介されています。[oai_citation:2‡Shakti Japan](https://shaktimat.co.jp/pages/how-to-use?utm_source=chatgpt.com)
+
+    </p>
+
+  </div>
+
+
+
+  <div class="info-section">
+
+    <h2>
+      🌿 シャクティマットで期待されていること
+    </h2>
+
+    <p>
+
+      シャクティ公式では、
+      指圧・アキュプレッシャーによるウェルネス習慣として、
+
+    </p>
+
+    <ul class="info-list">
+
+      <li>
+        🌿 身体の緊張をほぐすサポート
+      </li>
+
+      <li>
+        🩸 血行を促すこと
+      </li>
+
+      <li>
+        🧘 リラックスする時間を作ること
+      </li>
+
+      <li>
+        🌙 就寝前の習慣として取り入れること
+      </li>
+
+      <li>
+        ✨ 心身を整えるウェルネス習慣
+      </li>
+
+    </ul>
+
+    <p class="disclaimer">
+
+      ※上記は公式が紹介している内容を含みます。
+      効果・感じ方には個人差があります。
+
+    </p>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       FAQ
+  ================================================== -->
+
+  <div class="info-section">
+
+    <h2>
+      ❓ シャクティマット よくある質問
+    </h2>
+
+
+    <details>
+
+      <summary>
+        シャクティマットは痛いですか？
+      </summary>
+
+      <p>
+
+        初めて使うときは、
+        スパイクによる刺激を強く感じる場合があります。
+
+        <br><br>
+
+        シャクティ公式でも、
+        最初は刺激的に感じるものの、
+        数分すると感覚が変化すると説明されています。
+
+        [oai_citation:3‡Shakti Japan](https://shaktimat.co.jp/pages/how-to-use?utm_source=chatgpt.com)
+
+      </p>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>
+        シャクティマットは初心者でも使えますか？
+      </summary>
+
+      <p>
+
+        シャクティには複数の強度が用意されています。
+
+        <br><br>
+
+        公式ではLightを
+        初めて使う人のスタート地点として紹介しています。
+
+        [oai_citation:4‡Shakti Japan](https://shaktimat.co.jp/collections/acupressure-products/products/shakti-premium-acupressure-mat?utm_source=chatgpt.com)
+
+      </p>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>
+        シャクティマットはどのくらい使えばいい？
+      </summary>
+
+      <p>
+
+        使い始めは無理をせず、
+        自分が耐えられる範囲から試すのがおすすめです。
+
+        <br><br>
+
+        シャクティ公式では、
+        20分程度の使用方法などが紹介されています。
+
+        [oai_citation:5‡Shakti Japan](https://shaktimat.co.jp/?utm_source=chatgpt.com)
+
+      </p>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>
+        シャクティマットはどの強度がおすすめ？
+      </summary>
+
+      <p>
+
+        刺激の感じ方は人によって異なります。
+
+        <br><br>
+
+        初めてならLight、
+        もっと強い刺激を求めるならOriginalやAdvancedなど、
+        自分の好みに合わせて選ぶ考え方があります。
+
+        [oai_citation:6‡Shakti Japan](https://shaktimat.co.jp/collections/acupressure-products/products/shakti-premium-acupressure-mat?utm_source=chatgpt.com)
+
+      </p>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>
+        シャクティマットは何に使うもの？
+      </summary>
+
+      <p>
+
+        自宅でリラックスする時間を作ったり、
+        身体の刺激を感じながらウェルネス習慣を取り入れたりするための
+        アキュプレッシャー系アイテムです。
+
+        <br><br>
+
+        首・肩・背中などに使う方法が公式でも紹介されています。
+
+        [oai_citation:7‡Shakti Japan](https://shaktimat.co.jp/pages/how-to-use?utm_source=chatgpt.com)
+
+      </p>
+
+    </details>
+
+  </div>
+
+
+</section>
+
+
+
+<div class="footer">
+
+  🌺 🟠 🪷 🟢 🌵 🟣 🌺 🩷
 
 </div>
+
+
+</div>
+
 
 
 <script>
 
-/* =========================================
+/* ==================================================
    8タイプ
-========================================= */
+================================================== */
 
 const types = {
 
   stimulation: {
+
     emoji: "🔥🌵",
-    title: "刺激を求める冒険家タイプ",
-    subtitle: "毎日にちょっとした刺激を取り入れるのが得意！",
+
+    title:
+      "刺激を求める冒険家タイプ",
+
+    subtitle:
+      "毎日にちょっとした刺激を取り入れるのが得意！",
+
     text:
-      "あなたは、いつもの生活の中にも新しい刺激を取り入れることで、毎日を楽しくできるタイプです 🔥✨ " +
-      "「面白そう！」と思ったものには一歩踏み出してみる好奇心があります。 " +
-      "そんなあなたなら、シャクティマットの独特な刺激も楽しめるかもしれません 🌵🌶️"
+      "あなたは、いつもの生活の中にも新しい刺激を取り入れることで、毎日を楽しくできるタイプです 🔥✨ 新しい体験を楽しめる好奇心があなたの魅力。独特な刺激のあるシャクティマットも、楽しみながら試せるかもしれません 🌵🌶️",
+
+    recommendation:
+      "「普通のリラックスグッズでは少し物足りない！」というあなたには、シャクティマットの独特な刺激が新しい体験になるかもしれません 🔥🌵"
   },
+
 
   relax: {
+
     emoji: "🌙🧘",
-    title: "リラックス上手タイプ",
-    subtitle: "自分の時間を大切にできる、穏やかなあなた ✨",
+
+    title:
+      "リラックス上手タイプ",
+
+    subtitle:
+      "自分の時間を大切にできる穏やかなあなた ✨",
+
     text:
-      "あなたは、自分自身のペースを大切にできるタイプです 🌙💜 " +
-      "忙しい毎日の中でも、ほっと一息つく時間を意識できるのは素敵なこと。 " +
-      "そんなあなたには、自宅で気軽に取り入れられる新しいリラックス習慣が合いそうです 🧘🌿"
+      "あなたは、自分のペースを大切にできるタイプです 🌙💜 忙しい毎日の中で、ほっと一息つく時間を作れることは素敵なこと。自宅でできる新しいリラックス習慣とも相性が良さそうです 🌿",
+
+    recommendation:
+      "寝る前や一日の終わりに、自分のための時間を作りたいあなた。シャクティマットを使って、いつものリラックスタイムに少し変化を加えてみるのも面白そうです 🌙✨"
   },
+
 
   novelty: {
+
     emoji: "✨🚀",
-    title: "新しい物好きタイプ",
-    subtitle: "「知らないもの」にワクワクできる好奇心派！",
+
+    title:
+      "新しい物好きタイプ",
+
+    subtitle:
+      "「知らないもの」にワクワクできる好奇心派！",
+
     text:
-      "あなたは、新しいものを見つけると試してみたくなるタイプです ✨🚀 " +
-      "好奇心を持って新しい体験を楽しめるのは、あなたの大きな魅力。 " +
-      "まだ試したことのないシャクティマットも、候補に入れてみる価値がありそうです 🌵💫"
+      "あなたは、新しいものを見つけると試してみたくなるタイプです ✨🚀 好奇心を持って新しい体験を楽しめることが大きな魅力。まだ使ったことのないアイテムにも積極的に挑戦できそうです 🌵💫",
+
+    recommendation:
+      "シャクティマットは、一般的なクッションやマッサージグッズとは少し違った刺激を楽しめるアイテム。新しいウェルネス習慣を探しているあなたにぴったりかもしれません ✨"
   },
+
 
   stability: {
+
     emoji: "🏡🌿",
-    title: "安定志向タイプ",
-    subtitle: "自分に合った心地よさを大切にするあなた 🏡",
+
+    title:
+      "安定志向タイプ",
+
+    subtitle:
+      "自分に合った心地よさを大切にするあなた 🏡",
+
     text:
-      "あなたは、無理に新しいものを追いかけるより、自分にとって心地よいものを大切にできるタイプです 🌿🏡 " +
-      "だからこそ、新しいものを選ぶときも「自分に合うか」をしっかり考えられます。 " +
-      "おうち時間に新しい習慣を1つ加えるなら、シャクティマットも面白い選択肢です ✨"
+      "あなたは、無理に新しいものを追いかけるより、自分にとって心地よいものを大切にできるタイプです 🌿🏡 新しいものを選ぶときも、自分に合うかを考えられるのがあなたの良さです。",
+
+    recommendation:
+      "シャクティマットを選ぶなら、まずは刺激の強さを確認するのがおすすめ。自分に合った強度から、少しずつ新しい習慣に取り入れてみるのが良さそうです 🌿"
   },
+
 
   energy: {
+
     emoji: "☀️⚡",
-    title: "元気いっぱいタイプ",
-    subtitle: "エネルギーにあふれた毎日を楽しむあなた！",
+
+    title:
+      "元気いっぱいタイプ",
+
+    subtitle:
+      "エネルギーにあふれた毎日を楽しむあなた！",
+
     text:
-      "あなたは、日々をアクティブに楽しむエネルギッシュなタイプ ☀️⚡ " +
-      "行動力があり、やりたいことを見つけるとすぐ動けるのが魅力です。 " +
-      "そんなあなたにも、ときには立ち止まって自分をいたわる時間が必要かもしれません 🧘🌙"
+      "あなたは、日々をアクティブに楽しむエネルギッシュなタイプ ☀️⚡ 行動力があり、やりたいことを見つけると動けるのが魅力です。そんなあなたにも、ときには立ち止まって自分をいたわる時間が必要かもしれません 🧘",
+
+    recommendation:
+      "アクティブな毎日だからこそ、家でゆっくりする時間を作るのも大切。シャクティマットを「何もしない時間」のきっかけとして取り入れるのも良さそうです 🌙✨"
   },
+
 
   hardworker: {
+
     emoji: "💪🌺",
-    title: "日々頑張っているタイプ",
-    subtitle: "毎日をしっかり走り続けているあなたへ 💪",
+
+    title:
+      "日々頑張っているタイプ",
+
+    subtitle:
+      "毎日をしっかり走り続けているあなたへ 💪",
+
     text:
-      "あなたは、日々のことをきちんとこなしながら頑張れるタイプです 💪🌺 " +
-      "頑張れることは大きな長所ですが、自分のためだけに使う時間も同じくらい大切。 " +
-      "シャクティマットを、忙しい一日の中に小さな区切りを作るアイテムとして試してみるのも良さそうです 🌙✨"
+      "あなたは、日々のことをきちんとこなしながら頑張れるタイプです 💪🌺 頑張れることは大きな長所ですが、自分のためだけに使う時間も大切。",
+
+    recommendation:
+      "忙しい毎日の中に、自分のためだけの時間を作りたいあなたに。シャクティマットを使って、短時間でも自分に意識を向ける習慣を作ってみるのもおすすめです 🌺🌙"
   },
+
 
   home: {
+
     emoji: "🛋️🏡",
-    title: "おうち時間が大事タイプ",
-    subtitle: "自宅を最高の居場所にできるあなた 🏡✨",
+
+    title:
+      "おうち時間が大事タイプ",
+
+    subtitle:
+      "自宅を最高の居場所にできるあなた 🏡✨",
+
     text:
-      "あなたは、自分の家で過ごす時間を大切にできるタイプです 🛋️🏡 " +
-      "お気に入りの空間でゆっくり過ごすことは、立派な楽しみ方。 " +
-      "そんなおうち時間に、新しいウェルネスアイテムを加えるのも楽しそうです 🌿🌵"
+      "あなたは、自分の家で過ごす時間を大切にできるタイプです 🛋️🏡 お気に入りの空間でゆっくり過ごすことは、それだけで素敵な楽しみ方。",
+
+    recommendation:
+      "シャクティマットは自宅で使えるので、おうち時間との相性は抜群。ソファやベッドで過ごす時間に、新しいウェルネス習慣を加えてみるのも楽しそうです 🛋️🌿"
   },
 
+
   outdoor: {
+
     emoji: "🌳🏕️",
-    title: "アウトドアタイプ",
-    subtitle: "外の世界からエネルギーをもらうあなた！",
+
+    title:
+      "アウトドアタイプ",
+
+    subtitle:
+      "外の世界からエネルギーをもらうあなた！",
+
     text:
-      "あなたは、外に出て新しい景色や空気を感じることで元気になれるタイプ 🌳🏕️ " +
-      "好奇心旺盛で、行動範囲を広げることを楽しめるのが魅力です。 " +
-      "そんなあなたが家で過ごす時間にも、ちょっとした刺激を取り入れてみるのは面白そうですね 🌵✨"
+      "あなたは、外に出て新しい景色や空気を感じることで元気になれるタイプ 🌳🏕️ 行動範囲を広げることを楽しめるのが魅力です。",
+
+    recommendation:
+      "外でたっぷり動いた後は、家でゆっくり過ごす時間も大切。シャクティマットを使って、自宅で過ごす時間にも少し変化を加えてみるのは面白そうです 🌵✨"
   }
 
 };
 
 
-/* =========================================
+/* ==================================================
    質問
-========================================= */
+================================================== */
 
 const questions = [
 
   {
+
     emoji: "🌿",
+
     question:
       "最近、ちゃんとリラックスできていますか？",
 
@@ -592,6 +1435,7 @@ const questions = [
 
       {
         text: "🛋️ かなりできている",
+
         scores: {
           relax: 3,
           home: 2
@@ -600,6 +1444,7 @@ const questions = [
 
       {
         text: "😌 まあまあできている",
+
         scores: {
           relax: 2,
           stability: 1
@@ -608,6 +1453,7 @@ const questions = [
 
       {
         text: "😵‍💫 あまりできていない",
+
         scores: {
           hardworker: 2,
           relax: 1
@@ -616,6 +1462,7 @@ const questions = [
 
       {
         text: "🔥 なんとなく、ずっと動いている",
+
         scores: {
           energy: 2,
           stimulation: 2,
@@ -629,7 +1476,9 @@ const questions = [
 
 
   {
+
     emoji: "🌙",
+
     question:
       "寝る前のあなたは、どれに近い？",
 
@@ -640,6 +1489,7 @@ const questions = [
 
       {
         text: "📱 スマホを眺めている",
+
         scores: {
           stimulation: 2,
           novelty: 1
@@ -648,6 +1498,7 @@ const questions = [
 
       {
         text: "🎬 動画や映画を見る",
+
         scores: {
           novelty: 2,
           home: 1
@@ -656,6 +1507,7 @@ const questions = [
 
       {
         text: "📖 本を読む",
+
         scores: {
           relax: 2,
           stability: 1
@@ -664,6 +1516,7 @@ const questions = [
 
       {
         text: "😴 とにかく寝る",
+
         scores: {
           stability: 2,
           relax: 1
@@ -676,7 +1529,9 @@ const questions = [
 
 
   {
+
     emoji: "✨",
+
     question:
       "新しいものを見つけたとき、あなたは？",
 
@@ -687,6 +1542,7 @@ const questions = [
 
       {
         text: "🚀 とりあえず試してみる",
+
         scores: {
           novelty: 3,
           stimulation: 2
@@ -695,6 +1551,7 @@ const questions = [
 
       {
         text: "👀 気になるけど、まず調べる",
+
         scores: {
           novelty: 2,
           stability: 1
@@ -703,6 +1560,7 @@ const questions = [
 
       {
         text: "🤔 誰かの感想を聞いてみる",
+
         scores: {
           stability: 2,
           relax: 1
@@ -711,6 +1569,7 @@ const questions = [
 
       {
         text: "🏡 今気に入っているものを大切にする",
+
         scores: {
           stability: 3,
           home: 2
@@ -723,7 +1582,9 @@ const questions = [
 
 
   {
+
     emoji: "☀️",
+
     question:
       "予定のない休日の朝。今日は完全に自由です。あなたは？",
 
@@ -734,6 +1595,7 @@ const questions = [
 
       {
         text: "🛋️ 家でゆっくりする",
+
         scores: {
           home: 3,
           relax: 2
@@ -742,6 +1604,7 @@ const questions = [
 
       {
         text: "☕ とりあえずカフェへ行く",
+
         scores: {
           relax: 2,
           novelty: 1
@@ -750,6 +1613,7 @@ const questions = [
 
       {
         text: "🚗 行ったことのない場所へ行く",
+
         scores: {
           novelty: 3,
           outdoor: 2
@@ -758,6 +1622,7 @@ const questions = [
 
       {
         text: "🏃 外に出て何かする",
+
         scores: {
           outdoor: 3,
           energy: 2
@@ -770,7 +1635,9 @@ const questions = [
 
 
   {
+
     emoji: "🚪",
+
     question:
       "あなたの目の前に4つの扉があります。なぜか1つだけ選ばなければなりません。どれを選ぶ？",
 
@@ -781,6 +1648,7 @@ const questions = [
 
       {
         text: "🟢 緑の扉",
+
         scores: {
           relax: 2,
           outdoor: 2
@@ -789,6 +1657,7 @@ const questions = [
 
       {
         text: "🟡 黄色の扉",
+
         scores: {
           energy: 3,
           novelty: 1
@@ -797,6 +1666,7 @@ const questions = [
 
       {
         text: "🟣 紫の扉",
+
         scores: {
           stimulation: 2,
           novelty: 2
@@ -805,6 +1675,7 @@ const questions = [
 
       {
         text: "🩷 ピンクの扉",
+
         scores: {
           home: 2,
           relax: 2
@@ -818,13 +1689,15 @@ const questions = [
 ];
 
 
-/* =========================================
+/* ==================================================
    診断処理
-========================================= */
+================================================== */
 
 let currentQuestion = 0;
 
+
 let scores = {
+
   stimulation: 0,
   relax: 0,
   novelty: 0,
@@ -833,18 +1706,24 @@ let scores = {
   hardworker: 0,
   home: 0,
   outdoor: 0
+
 };
 
 
 function startDiagnosis() {
 
   document
+    .getElementById("quiz")
+    .classList.remove("hidden");
+
+  document
     .getElementById("start")
     .classList.add("hidden");
 
-  document
-    .getElementById("quiz")
-    .classList.remove("hidden");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
   showQuestion();
 
@@ -853,7 +1732,9 @@ function startDiagnosis() {
 
 function showQuestion() {
 
-  const q = questions[currentQuestion];
+  const q =
+    questions[currentQuestion];
+
 
   document
     .getElementById("progress")
@@ -863,6 +1744,7 @@ function showQuestion() {
       " / " +
       questions.length;
 
+
   document
     .getElementById("progressFill")
     .style.width =
@@ -870,88 +1752,96 @@ function showQuestion() {
       questions.length * 100) +
       "%";
 
+
   document
     .getElementById("questionEmoji")
     .textContent =
       q.emoji;
+
 
   document
     .getElementById("question")
     .textContent =
       q.question;
 
+
   document
     .getElementById("hint")
     .textContent =
       q.hint;
 
-  const answers =
+
+  const answerArea =
     document.getElementById("answers");
 
-  answers.innerHTML = "";
 
-  q.answers.forEach(function(answer) {
+  answerArea.innerHTML = "";
 
-    const button =
-      document.createElement("button");
 
-    button.textContent =
-      answer.text;
+  q.answers.forEach(
+    function(answer) {
 
-    button.className =
-      "answer";
+      const button =
+        document.createElement("button");
 
-    button.onclick =
-      function() {
 
-        Object.keys(answer.scores)
-          .forEach(function(type) {
+      button.textContent =
+        answer.text;
 
-            scores[type] +=
-              answer.scores[type];
 
-          });
+      button.className =
+        "answer";
 
-        nextQuestion();
 
-      };
+      button.onclick =
+        function() {
 
-    answers.appendChild(button);
+          Object
+            .keys(answer.scores)
+            .forEach(
+              function(type) {
 
-  });
+                scores[type] +=
+                  answer.scores[type];
+
+              }
+            );
+
+
+          currentQuestion++;
+
+
+          if (
+            currentQuestion >=
+            questions.length
+          ) {
+
+            showResult();
+
+          } else {
+
+            showQuestion();
+
+          }
+
+        };
+
+
+      answerArea
+        .appendChild(button);
+
+    }
+  );
 
 }
 
-
-function nextQuestion() {
-
-  currentQuestion++;
-
-  if (
-    currentQuestion >=
-    questions.length
-  ) {
-
-    showResult();
-
-  } else {
-
-    showQuestion();
-
-  }
-
-}
-
-
-/* =========================================
-   結果
-========================================= */
 
 function showResult() {
 
   document
     .getElementById("quiz")
     .classList.add("hidden");
+
 
   document
     .getElementById("result")
@@ -961,27 +1851,31 @@ function showResult() {
   let winner =
     "relax";
 
+
   let highest =
     scores.relax;
 
 
-  Object.keys(scores)
-    .forEach(function(type) {
+  Object
+    .keys(scores)
+    .forEach(
+      function(type) {
 
-      if (
-        scores[type] >
-        highest
-      ) {
+        if (
+          scores[type] >
+          highest
+        ) {
 
-        highest =
-          scores[type];
+          highest =
+            scores[type];
 
-        winner =
-          type;
+          winner =
+            type;
+
+        }
 
       }
-
-    });
+    );
 
 
   const result =
@@ -993,15 +1887,18 @@ function showResult() {
     .textContent =
       result.emoji;
 
+
   document
     .getElementById("resultTitle")
     .textContent =
       result.title;
 
+
   document
     .getElementById("resultSubtitle")
     .textContent =
       result.subtitle;
+
 
   document
     .getElementById("resultText")
@@ -1009,36 +1906,46 @@ function showResult() {
       result.text;
 
 
-  /*
-    8タイプの結果でも
-    シャクティ適性は必ず高めにする。
-  */
+  document
+    .getElementById("recommendationText")
+    .textContent =
+      result.recommendation;
+
 
   const suitability =
     92 +
-    Math.floor(Math.random() * 7);
+    Math.floor(
+      Math.random() * 7
+    );
+
 
   document
     .getElementById("score")
     .textContent =
       suitability + "%";
 
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
 }
 
 
-/* =========================================
+/* ==================================================
    商品リンク
-========================================= */
+================================================== */
 
 function openProduct() {
 
   /*
-    後からここを変更します。
+    後ほどアフィリエイトURLをここに設定します。
 
     例：
 
     window.location.href =
-      "ここにアフィリエイトURL";
+      "https://example.com/affiliate";
 
   */
 
@@ -1050,5 +1957,7 @@ function openProduct() {
 
 </script>
 
+
 </body>
+
 </html>
